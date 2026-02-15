@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>💖</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#f8cdda,#fbc2eb);
+    font-family:Georgia, serif;
+    overflow:hidden;
+}
+
+/* PEMBE KALPLER */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    font-size:18px;
+    color:rgba(255,105,180,0.6);
+    animation:rise linear infinite;
+}
+@keyframes rise{
+    from{transform:translateY(0) scale(1); opacity:0.7;}
+    to{transform:translateY(-110vh) scale(1.5); opacity:0;}
+}
+
+/* ANA KART */
+.card{
+    background:white;
+    padding:50px 35px;
+    border-radius:35px;
+    width:90%;
+    max-width:500px;
+    text-align:center;
+    box-shadow:0 25px 60px rgba(0,0,0,0.25);
+    position:relative;
+    z-index:2;
+    transition:0.6s;
+}
+
+.main-title{
+    font-size:30px;
+    color:#b30059;
+    margin-bottom:30px;
+}
+
+/* BUTONLAR */
+.buttons{
+    position:relative;
+    height:100px;
+}
+
+button{
+    padding:15px 32px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+    position:absolute;
+}
+
+#yes{
+    background:#ff0066;
+    color:white;
+    left:50%;
+    transform:translateX(-130%);
+}
+
+#no{
+    background:#999;
+    color:white;
+    left:50%;
+    transform:translateX(30%);
+}
+
+/* ŞİİR */
+#content{
+    display:none;
+    margin-top:10px;
+    animation:fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.poem{
+    white-space:pre-line;
+    font-size:18px;
+    line-height:1.9;
+    padding:35px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#fff0f6,#ffe0ec);
+    border:2px solid #ff80bf;
+    box-shadow:0 10px 40px rgba(255,0,102,0.2);
+    position:relative;
+}
+
+/* Zarif süs */
+.poem:before{
+    content:"❦";
+    position:absolute;
+    top:15px;
+    left:20px;
+    font-size:22px;
+    color:#ff0066;
+}
+.poem:after{
+    content:"❦";
+    position:absolute;
+    bottom:15px;
+    right:20px;
+    font-size:22px;
+    color:#ff0066;
+}
+
+.message{
+    margin-top:35px;
+    font-size:20px;
+    font-weight:bold;
+    color:#99004d;
+    animation:fadeIn 2s ease forwards;
+}
+
+/* EVET BASILINCA ARKA PLAN PARLAMA */
+.flash{
+    animation:flashBg 1s ease;
+}
+@keyframes flashBg{
+    0%{background:#fff;}
+    50%{background:#ffe6f2;}
+    100%{background:#fff;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+<div class="main-title" id="title">Beni Affeder misin? 😔</div>
+
+<div class="buttons">
+<button id="yes">Affedeyim</button>
+<button id="no">Hayır/button>
+</div>
+
+<div id="content">
+
+<div class="poem">
+Sen kokmayan gülü neyleyim,
+Neyleyim sensiz baharı?
+Sen doğmayan günü neyleyim,
+Neyleyim sensiz ben dünyayı?
+
+Senin tenine değmeden gelen yağmuru istemem
+meltemi istemem.
+Seni parlayacaksa parlasın yıldızlar,
+Sana yanmayan yıldızı semalarda istemem.
+</div>
+
+<div class="message">
+Seni Ç∞k Seviyorum ❤️<br><br>
+Değişeceğim söz veriyorum.<br><br>
+Beni affettiğin için teşekkür ederim meleğim 💖
+</div>
+
+</div>
+</div>
+
+<script>
+let yesBtn = document.getElementById("yes");
+let noBtn = document.getElementById("no");
+let content = document.getElementById("content");
+let title = document.getElementById("title");
+let card = document.getElementById("card");
+
+let size = 1;
+
+noBtn.addEventListener("click", function(){
+    let offsetX = (Math.random()*120) - 60;
+    let offsetY = (Math.random()*60) - 30;
+
+    noBtn.style.transform =
+        "translateX(" + offsetX + "px) translateY(" + offsetY + "px)";
+
+    size += 0.3;
+    yesBtn.style.transform =
+        "translateX(-130%) scale(" + size + ")";
+});
+
+yesBtn.addEventListener("click", function(){
+    content.style.display = "block";
+    yesBtn.style.display = "none";
+    noBtn.style.display = "none";
+    title.style.display = "none";   // ÜSTTEKİ YAZI KALKTI
+    card.classList.add("flash");    // Parlama efekti
+});
+
+/* PEMBE KALPLER */
+function createHeart(){
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (5 + Math.random()*5) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 10000);
+}
+
+setInterval(createHeart, 500);
+</script>
+
+</body>
+</html>
