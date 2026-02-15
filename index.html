@@ -25,8 +25,8 @@ body{
     animation:rise linear infinite;
 }
 @keyframes rise{
-    from{transform:translateY(0) scale(1); opacity:0.7;}
-    to{transform:translateY(-110vh) scale(1.5); opacity:0;}
+    from{transform:translateY(0); opacity:0.7;}
+    to{transform:translateY(-110vh); opacity:0;}
 }
 
 /* KONFETİ */
@@ -34,7 +34,6 @@ body{
     position:absolute;
     width:8px;
     height:8px;
-    background:red;
     top:0;
     animation:fall 3s linear forwards;
 }
@@ -55,9 +54,8 @@ body{
     z-index:2;
 }
 
-/* BAŞLIK */
 .main-title{
-    font-size:28px;
+    font-size:26px;
     color:#b30059;
     margin-bottom:30px;
 }
@@ -73,7 +71,7 @@ button{
     color:white;
 }
 
-/* AFFET EKRANI BUTONLAR */
+/* AFFET BUTONLAR */
 .buttons{
     position:relative;
     height:100px;
@@ -95,7 +93,6 @@ button{
 /* ŞİİR */
 #content{
     display:none;
-    margin-top:10px;
 }
 
 .poem{
@@ -120,6 +117,7 @@ button{
 
 <body>
 
+<!-- HOŞ GELDİN EKRANI -->
 <div class="card" id="welcome">
 
 <div class="main-title">
@@ -131,9 +129,10 @@ Senin İçin Hazırladığım Şeye Bakmak İster misin?
 
 </div>
 
+<!-- ANA EKRAN -->
 <div class="card" id="main" style="display:none;">
 
-<div class="main-title">
+<div class="main-title" id="apologyTitle">
 Biliyorum mallık ettim…<br>
 Çok özür dilerim 😔<br><br>
 Beni Affeder misin?
@@ -178,6 +177,7 @@ function startLove(){
 let yesBtn = document.getElementById("yes");
 let noBtn = document.getElementById("no");
 let content = document.getElementById("content");
+let apologyTitle = document.getElementById("apologyTitle");
 
 let size = 1;
 
@@ -195,6 +195,7 @@ yesBtn.addEventListener("click", function(){
     content.style.display = "block";
     yesBtn.style.display = "none";
     noBtn.style.display = "none";
+    apologyTitle.style.display = "none"; // ÜST YAZI TAMAMEN GİDİYOR
 });
 
 /* Kalpler */
